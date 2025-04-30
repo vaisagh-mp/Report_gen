@@ -49,28 +49,28 @@
 
     <!-- Job Description -->
     <h3 style="text-align: center; margin-top: 20px;">JOB DESCRIPTION</h3>
-    <div style="border: 1px solid #000; padding: 10px; margin-bottom: 20px;">
+    <div>
         {{ report.job_description|safe }}
     </div>
-
+    
     <h4>Attachments:</h4>
     <div style="padding: 10px; margin-bottom: 20px;">
         {% if report.images.all %}
         <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
-            {% for img in report.images.all %}
+          {% for img in report.images.all %}
             {% if forloop.counter0|divisibleby:3 %}
             <tr>
-                {% endif %}
-                <td width="33%" align="center" style="vertical-align: top;">
-                    <img src="{{ img.image.url }}" width="250" /><br />
-                </td>
-                {% if forloop.counter|divisibleby:3 or forloop.last %}
+            {% endif %}
+              <td width="33%" align="center" style="vertical-align: top;">
+                <img src="{{ img.image.url }}" width="250" /><br/>
+              </td>
+            {% if forloop.counter|divisibleby:3 or forloop.last %}
             </tr>
             {% endif %}
-            {% endfor %}
+          {% endfor %}
         </table>
         {% endif %}
-    </div>
+      </div>
 
     <!-- Footer -->
     <div style="border-top: 1px solid #000; margin-top: 30px; padding-top: 10px; text-align: center; font-size: 10px;">
