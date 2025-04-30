@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Report Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f5f5f5;
+    }
+    .form-container {
+      max-width: 800px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    .file-upload {
+      margin-top: 10px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .section-title {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <table width="100%" style="border: none; margin-bottom: 10px;">
+    <tr>
+        <td align="center">
+            <img src="{% static 'img/reportlogo.webp' %}" width="40%"/>
+        </td>
+    </tr>
+  </table>
+
+<div class="form-container">
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    
+    <div class="form-group">
+      <label for="service_report_no">Service Report No</label>
+      <input type="text" id="service_report_no" name="service_report_no">
+    </div>
+
+    <div class="form-group">
+      <label for="work_order_number">Work Order Number</label>
+      <input type="text" id="work_order_number" name="work_order_number">
+    </div>
+
+    <div class="form-group">
+      <label for="vessel">Vessel</label>
+      <input type="text" id="vessel" name="vessel">
+    </div>
+
+    <div class="form-group">
+      <label for="owner_agent">Owner/Agent</label>
+      <input type="text" id="owner_agent" name="owner_agent">
+    </div>
+
+    <div class="form-group">
+      <label for="imo_no">IMO No</label>
+      <input type="text" id="imo_no" name="imo_no">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location">
+    </div>
+
+    <div class="form-group">
+      <label for="equipment_type">Equipment Type</label>
+      <input type="text" id="equipment_type" name="equipment_type">
+    </div>
+
+    <div class="form-group">
+      <label for="installation_type">Installation Type</label>
+      <input type="text" id="installation_type" name="installation_type">
+    </div>
+
+    <div class="form-group">
+      <label for="engineer">Engineer</label>
+      <input type="text" id="engineer" name="engineer">
+    </div>
+
+    <div class="form-group">
+      <label for="reason_for_call">Reason for Call</label>
+      <input type="text" id="reason_for_call" name="reason_for_call">
+    </div>
+
+    <div class="section-title">Job Description</div>
+
+    <div class="form-group">
+        <textarea id="job_description" name="job_description"></textarea>
+      </div>
+
+    <div class="form-group file-upload">
+      <label for="file-upload">Upload File</label>
+      <input type="file" id="file-upload" name="images" multiple>
+    </div>
+
+    <button type="submit" class="btn">Generate PDF</button>
+
+  </form>
+</div>
+
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<!-- Initialize CKEditor -->
+<script>
+    CKEDITOR.replace('job_description');
+  </script>
+</body>
+</html>
